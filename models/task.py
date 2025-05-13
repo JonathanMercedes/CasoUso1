@@ -1,8 +1,8 @@
 from datetime import datetime, date
 from typing import Optional
 from sqlmodel import SQLModel, Field, Relationship
-from .todo_list import TodoList
-from .task_status import TaskStatus
+from models.todo_list import TodoList
+from models.task_status import TaskStatus
 
 class Task(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)

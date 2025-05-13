@@ -1,8 +1,7 @@
 from datetime import datetime
 from typing import Optional, List
 from sqlmodel import SQLModel, Field, Relationship
-from app.models.task import Task
-from .user import User
+from models.user import User
 
 class TodoList(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -12,4 +11,4 @@ class TodoList(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
     owner: Optional[User] = Relationship(back_populates="todo_lists")
-    tasks: List["Task"] = Relationship(back_populates="todo_list")
+    tasks: List["Task"] = Relationship(back_populates="todo_list") # type: ignore

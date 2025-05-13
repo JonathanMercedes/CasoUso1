@@ -1,7 +1,6 @@
 from datetime import datetime
 from typing import Optional, List
 from sqlmodel import SQLModel, Field, Relationship
-from app.models.todo_list import TodoList
 
 class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -10,4 +9,4 @@ class User(SQLModel, table=True):
     hashed_password: str
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
-    todo_lists: List["TodoList"] = Relationship(back_populates="owner")
+    todo_lists: List["TodoList"] = Relationship(back_populates="owner") # type: ignore
